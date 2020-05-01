@@ -22,8 +22,8 @@ defmodule Prize.Concurrent do
   end
 
 
-  def check( today,  lateCount,  absentCount,  daysToGo) when today == :absent,   do: run lateCount, absentCount + 1, daysToGo - 1
-  def check( today,  lateCount, _absentCount,  daysToGo) when today == :late,     do: run lateCount + 1, 0, daysToGo - 1
   def check( today,  lateCount, _absentCount,  daysToGo) when today == :onTime,   do: run lateCount, 0, daysToGo - 1
+  def check( today,  lateCount, _absentCount,  daysToGo) when today == :late,     do: run lateCount + 1, 0, daysToGo - 1
+  def check(_today,  lateCount,  absentCount,  daysToGo),                         do: run lateCount, absentCount + 1, daysToGo - 1
 
 end
