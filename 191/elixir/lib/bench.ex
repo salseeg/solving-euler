@@ -9,9 +9,13 @@ defmodule Bench do
 
     {n, ""} = Integer.parse hd(arg)
 
-#    IO.inspect n, label: "n"
+    mark n
+  end
+
+  def mark(n) do
     start = DateTime.utc_now
-    prime = Prize.FastNoSwitchTail.count_prize n
+#    prime = Prize.FastNoSwitchTail.count_prize n
+    prime = Prize.ConcurrentMessageNoSwitch.count_prize n
     finish = DateTime.utc_now
     IO.inspect prime, label: "Prize count"
     IO.inspect DateTime.diff(finish, start, :millisecond) / 1_000, label: "took s"
