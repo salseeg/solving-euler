@@ -7,9 +7,6 @@ typedef unsigned long result;
 typedef unsigned short int counter;
 typedef enum { absent, late, onTime } state;
 
-result check(state today, counter lateCount, counter absentCount, counter daysToGo);
-
-
 result run(counter lateCount, counter absentCount, counter daysToGo)
 {
     if (absentCount > 2 || lateCount > 1) {
@@ -20,23 +17,9 @@ result run(counter lateCount, counter absentCount, counter daysToGo)
         return 1;
     }
 
-    return check(late, lateCount, absentCount, daysToGo)
-        +  check(onTime, lateCount, absentCount, daysToGo)
-        +  check(absent, lateCount, absentCount, daysToGo);
-}
-
-result check(state today, counter lateCount, counter absentCount, counter daysToGo)
-{
-    counter nextDay = daysToGo - 1;
-
-    if (today == onTime) {
-        return run(lateCount, 0, nextDay);
-    }
-    if (today == late) {
-        return run(lateCount + 1, 0, nextDay);
-    }
-
-    return run(lateCount, absentCount + 1, nextDay);
+    return run(lateCount + 1, 0, daysToGo - 1)
+        +  run(lateCount, 0, daysToGo - 1)
+        +  run(lateCount, absentCount + 1, daysToGo - 1);
 }
 
 result countPrize(counter daysToGo)
