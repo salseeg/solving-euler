@@ -1,10 +1,10 @@
 .PHONY: all check run
 
-all: check
+all: check run
 
 check:
 	php bench.php 20
 
 run: func.php
-	php func.php 30
+	php bench.php 30
 
