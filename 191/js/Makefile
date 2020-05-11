@@ -10,3 +10,4 @@ run:
 	node $(TARGET) 10
 	node $(TARGET) 20
 	node $(TARGET) 30
+	node $(TARGET) 35
