@@ -14,10 +14,10 @@ defmodule Bench do
 
   def mark(n) do
     start = DateTime.utc_now
-#    prime = Prize.FastNoSwitchTail.count_prize n
-    prime = Prize.Generations.count_prize n
+#    result = Prize.Buckets.count_prize n
+    result = Prize.FastNoSwitchTailNoCounterShortCallEtsCache.count_prize n
     finish = DateTime.utc_now
-    IO.inspect prime, label: "Prize count"
+    IO.inspect result, label: "Prize count"
     IO.inspect DateTime.diff(finish, start, :millisecond) / 1_000, label: "took s"
   end
 
