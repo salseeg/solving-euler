@@ -1,6 +1,6 @@
-.PHONY: check run all
+.PHONY: check run all arb
 
-TARGET = optimized.py
+TARGET = buckets.py
 RUN = python
 
 check:
@@ -11,3 +11,9 @@ run:
 	$(RUN) $(TARGET) 10
 	$(RUN) $(TARGET) 20
 	$(RUN) $(TARGET) 30
+
+arb:
+	$(RUN) $(TARGET) 365
+	$(RUN) $(TARGET) 3650
+	$(RUN) $(TARGET) 36500
+	$(RUN) $(TARGET) 365000
