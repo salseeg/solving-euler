@@ -5,9 +5,10 @@
 //require './imperative_untyped.php';
 // require './func_untyped_notstrict.php';
 //require './func_untyped_notstrict_noswitch_shortcall.php';
-// require './func_untyped_notstrict_noswitch_shortcall_cache.php';
+//require './func_untyped_notstrict_noswitch_shortcall_cache.php';
 //require './func_untyped_notstrict_cache.php';
-require './imperative_buckets.php';
+//require './imperative_buckets.php';
+require './imperative_buckets_arb.php';
 
 
 $n = $_SERVER['argv'][1];
@@ -18,10 +19,8 @@ $endTime = microtime(true);
 
 $spent = $endTime - $startTime;
 
-$res = strval($res);
+$res = (string) $res;
 
-print "Result: $res\n";
-$res = PHP_INT_MAX;
 print "Result: $res\n";
 print "Time: $spent\n";
 
